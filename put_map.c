@@ -6,7 +6,7 @@
 /*   By: cboussau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 21:10:19 by cboussau          #+#    #+#             */
-/*   Updated: 2016/04/08 21:52:56 by cboussau         ###   ########.fr       */
+/*   Updated: 2016/04/09 18:05:36 by cboussau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ static void		get_pixel(t_lst *ptr, t_add *node, int x, int y)
 		draw_line(pixel[0], pixel[1], node);
 	}
 }
-void		put_map_on_window(t_lst *ptr, t_add *node)
+
+void			put_map_on_window(t_lst *ptr, t_add *node)
 {
 	t_lst	*tmp;
 	int		x;

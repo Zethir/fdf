@@ -6,7 +6,7 @@
 /*   By: cboussau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/08 19:32:24 by cboussau          #+#    #+#             */
-/*   Updated: 2016/04/08 23:07:36 by cboussau         ###   ########.fr       */
+/*   Updated: 2016/04/09 17:58:05 by cboussau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		check_tablen(t_lst *ptr)
 {
-	t_lst 	*tmp;
+	t_lst	*tmp;
 
 	tmp = ptr;
 	while (ptr->next)
@@ -74,5 +74,5 @@ int		add_color(int z1, int z2)
 		return (0xeb4457);
 	else if (z1 < 0 || z2 < 0)
 		return (0xec720d);
-	return(0xFFFFFF);
+	return (0xFFFFFF);
 }

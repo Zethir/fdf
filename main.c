@@ -6,7 +6,7 @@
 /*   By: cboussau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/06 21:00:25 by cboussau          #+#    #+#             */
-/*   Updated: 2016/04/08 22:04:28 by cboussau         ###   ########.fr       */
+/*   Updated: 2016/04/09 18:04:02 by cboussau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ int		deal_with_arg(int argc, char **argv, int fd)
 	if (argc != 2)
 	{
 		ft_putendl_fd("Usage : ./fdf <filename>", 2);
-		exit (0);
+		exit(0);
 	}
 	else if (argc == 2)
 	{
 		if ((fd = open(argv[1], O_RDONLY)) < 0)
 		{
 			perror(argv[1]);
-			exit (0);
+			exit(0);
 		}
 	}
 	return (fd);
@@ -32,7 +32,7 @@ int		deal_with_arg(int argc, char **argv, int fd)
 
 void	push_node(t_lst *node, t_lst **head)
 {
-	t_lst *tmp;
+	t_lst	*tmp;
 
 	if (*head == NULL)
 	{
@@ -53,13 +53,13 @@ t_lst	*init_lst(t_lst *ptr, char *line)
 
 	tab_len = 0;
 	if (!(ptr = (t_lst *)malloc(sizeof(t_lst))))
-			return (NULL);
+		return (NULL);
 	ptr->next = NULL;
 	ptr->str = ft_strsplit(line, ' ');
 	tab_len = ft_tablen(ptr->str);
 	ptr->tab = malloc(sizeof(int) * (tab_len));
 	i = 0;
-	while (ptr->str[i])	
+	while (ptr->str[i])
 	{
 		ptr->tab[i] = ft_atoi(ptr->str[i]);
 		i++;
@@ -68,13 +68,12 @@ t_lst	*init_lst(t_lst *ptr, char *line)
 	return (ptr);
 }
 
-
 t_lst	*get_map(t_lst *ptr, int fd)
 {
 	t_lst	*head;
 	char	*line;
 	int		y;
-	
+
 	line = NULL;
 	head = NULL;
 	y = 0;
@@ -87,7 +86,6 @@ t_lst	*get_map(t_lst *ptr, int fd)
 	return (head);
 }
 
-
 int		main(int argc, char **argv)
 {
 	int		fd;
@@ -96,7 +94,7 @@ int		main(int argc, char **argv)
 
 	fd = 0;
 	ptr = NULL;
-	fd = deal_with_arg(argc, argv, fd);	
+	fd = deal_with_arg(argc, argv, fd);
 	ptr = get_map(ptr, fd);
 	node = init_add(ptr);
 	open_window(ptr, node);

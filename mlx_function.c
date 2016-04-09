@@ -6,7 +6,7 @@
 /*   By: cboussau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 18:13:28 by cboussau          #+#    #+#             */
-/*   Updated: 2016/04/08 22:51:26 by cboussau         ###   ########.fr       */
+/*   Updated: 2016/04/09 18:00:17 by cboussau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ static void	do_zoom(int keycode, t_add *node)
 	if (keycode == 27 || keycode == 78)
 		node->zoom -= 1;
 	else if (keycode == 24 || keycode == 69)
-		node->zoom +=1;
+		node->zoom += 1;
 }
 
 static void	add_relief(int keycode, t_add *node)
 {
-	if (keycode ==	116)
+	if (keycode == 116)
 		node->z_ampl += 1;
 	else if (keycode == 121)
 		node->z_ampl -= 1;
@@ -45,7 +45,7 @@ int			key_handling(int keycode, t_pack *tmp)
 	if (keycode == 53)
 	{
 		free_lst(tmp->ptr);
-		exit (0);
+		exit(0);
 	}
 	do_zoom(keycode, tmp->node);
 	add_relief(keycode, tmp->node);
@@ -65,7 +65,7 @@ int			key_handling(int keycode, t_pack *tmp)
 	return (0);
 }
 
-void	open_window(t_lst *ptr, t_add *node)
+void		open_window(t_lst *ptr, t_add *node)
 {
 	t_pack	tmp;
 
@@ -74,11 +74,11 @@ void	open_window(t_lst *ptr, t_add *node)
 	if (check_tablen(ptr) == 1)
 	{
 		ft_putendl_fd("Invalid map recieved\n", 2);
-		exit (-1);
+		exit(-1);
 	}
 	node->mlx = mlx_init();
 	node->win = mlx_new_window(node->mlx, 1000, 1000, "My fdf");
 	put_map_on_window(ptr, node);
 	mlx_key_hook(node->win, key_handling, &tmp);
-	mlx_loop(node->mlx); 
+	mlx_loop(node->mlx);
 }
